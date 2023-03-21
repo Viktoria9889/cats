@@ -116,7 +116,7 @@ body {
   height: 100%;
   position: absolute;
   transition: all 1s;
-  background-color: #8f2222;
+  background-color: rgba(143, 34, 34, 0.436);
   color: #ffffff;
   font-size: 100px;
   font-weight: 800;

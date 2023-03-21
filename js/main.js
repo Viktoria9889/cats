@@ -10,6 +10,7 @@ console.log(div.clientHeight,div.clientWidth)
 
 let step = 50; 
 let size = 100;
+let stepW = 150;
 
 
 let cat_top =  50;
@@ -88,8 +89,8 @@ cat.addEventListener('click', (ev) => {
   if ((Math.abs(dt)<=size-step) && (Math.abs(dl)<=size-step))
     {
       console.log('1')
-      x = t;
-      y = l;
+      x = t-stepW;
+      y = l-stepW;
       changeColor = div.style.backgroundColor = "#b74b5b84";
     } 
     else  {
@@ -160,8 +161,8 @@ catB.addEventListener('click', (ev) => {
   if ((Math.abs(dt)<=size-step) && (Math.abs(dl)<=size-step))
   {
     console.log('B1')
-    xB = tB;
-    yB = lB;
+    xB = tB + stepW;
+    yB = lB + stepW;
     changeColor = div.style.backgroundColor = "#b74b5b84";
   } else {
     changeColor = div.style.backgroundColor = "#8bb9ce84";
