@@ -4,6 +4,9 @@ const div = document.querySelector(".div");
 const catB = document.querySelector(".cat_img_b");
 const dog = document.querySelector(".dog_img");
 const gameOver = document.querySelector(".game_over");
+const dogHome = document.querySelector(".dog_home");
+const dogText = document.querySelector(".dog_text");
+const catText = document.querySelector(".cat_text");
 
 let changeColor = div.style.backgroundColor = "#8bb9ce84";
 console.log(div.clientHeight,div.clientWidth)
@@ -11,12 +14,18 @@ console.log(div.clientHeight,div.clientWidth)
 let step = 50; 
 let size = 100;
 let stepW = 150;
+let sizeB = 150;
 
+let dogHome_top =  90;
+let dogHome_left = 450;
+dogHome.style.top = dogHome_top + "px";
+dogHome.style.left = dogHome_left + "px";
 
 let cat_top =  50;
 let cat_left = 150;
 cat.style.top = cat_top + "px";
 cat.style.left = cat_left + "px";
+
 
 let catB_top =  300;
 let catB_left = 500;
@@ -35,9 +44,15 @@ let t, tB, l, lB;
 let x, y, xB, yB;
 let dogl, dogt, xdog, ydog;
 let dt, dl, dtdog, dldog, tdog, ldog;
+let xHome, yHome;
 
 
+dogHome.addEventListener('click', (ev) => {
+  xHome = ev.pageX;
+  yHome = ev.pageY;
 
+  console.log('xHome:', xHome, 'yHome:', yHome)
+})
 
 cat.addEventListener('click', (ev) => {
   let catl = ev.pageX-cat.getBoundingClientRect().left;
@@ -104,15 +119,26 @@ cat.addEventListener('click', (ev) => {
     if ((Math.abs(dt)<=size-step) && (Math.abs(dl)<=size-step))
       {
        // console.log('10')
-        x = t;
-        y = l;
+       x = t-stepW;
+       y = l-stepW;
         gameOver.classList.add('show');
       } 
-
+  // перевірка з будою
+    dt = x - dogHome_top;
+    dl = y - dogHome_left;
+  if  ((Math.abs(dt)<=size-step) && (Math.abs(dl)<=size-step)) 
+    {
+      x = t;
+      y = l;
+      catText.classList.add('show_cat');
+    } else {
+        catText.classList.remove('show_cat');
+    }
   cat_top = x;
   cat_left = y; 
   cat.style.top = x + "px";
   cat.style.left = y + "px";
+  dogText.classList.remove('show_dog');
 });
 
   
@@ -185,11 +211,23 @@ catB.addEventListener('click', (ev) => {
       yB = lB;
     }
 
+      // перевірка з будою
+      dt = xB - dogHome_top;
+      dl = yB - dogHome_left;
+    if  ((Math.abs(dt)<=size-step) && (Math.abs(dl)<=size-step)) 
+      {
+        xB = t;
+        yB = l;
+        catText.classList.add('show_cat');
+      } else {
+        catText.classList.remove('show_cat');
+      }
+
   catB_top = xB;
   catB_left = yB; 
   catB.style.top = xB + "px";
   catB.style.left = yB + "px"; 
-
+  dogText.classList.remove('show_dog');
 })
 
 dog.addEventListener('click', (ev) => {
@@ -250,6 +288,16 @@ dog.addEventListener('click', (ev) => {
         ydog = ldog;
         gameOver.classList.add('show');
       }
+
+    //перевірка з будою
+      dt = xdog - dogHome_top;
+      dl = ydog - dogHome_left;
+    if  ((Math.abs(dt)<=size-step+10) && (Math.abs(dl)<=size-step+10)) 
+      {
+        dogText.classList.add('show_dog');
+        dog.style.display = 'none';
+      }
+
 
 
 

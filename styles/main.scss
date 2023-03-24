@@ -87,6 +87,7 @@ body {
   position: absolute;
   transition: all 1s;
   border-radius: 25px;
+  z-index: 5;
 }
 
 .div {
@@ -103,6 +104,7 @@ body {
   position: absolute;
   transition: all 1s;
   border-radius: 25px;
+  z-index: 5;
 }
 .dog_img {
   width: 100px;
@@ -110,6 +112,7 @@ body {
   position: absolute;
   transition: all 1s;
   border-radius: 25px;
+  z-index: 5;
 }
 
 .game_over {
@@ -128,5 +131,44 @@ body {
 }
 
 .game_over:not(.show) {
+  display: none;
+}
+.dog_home {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  transition: all 1s;
+  border-radius: 25px; 
+  z-index: 2;
+}
+
+.cat_text {
+  width: 667px;
+  height: 100px;
+  position: absolute;
+  transition: all 1s;
+  color: #952929;
+  font-size: 30px;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.dog_text {
+  width: 612px;
+  height: 100px;
+  position: absolute;
+  transition: all 1s;
+  color: #952929;
+  font-size: 30px;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.cat_text:not(.show_cat) {
+    display: none;
+}
+.dog_text:not(.show_dog) {
   display: none;
 }
